@@ -3,7 +3,7 @@ module.exports = {
         "browser": true,
         "es2021": true
     },
-    "extends": "standard-with-typescript",
+    "extends": "love",
     "overrides": [
         {
             "env": {
@@ -22,5 +22,6 @@ module.exports = {
         "sourceType": "module"
     },
     "rules": {
+        "@typescript-eslint/triple-slash-reference": "off"
     }
 }
