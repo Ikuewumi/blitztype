@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -21,6 +22,7 @@
   "devDependencies": {
     "@solidjs/testing-library": "^0.8.6",
     "@testing-library/jest-dom": "^6.4.2",
+    "@types/node": "^20.11.30",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "eslint": "^8.0.1",
     "eslint-config-love": "^43.1.0",
