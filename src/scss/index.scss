@@ -1,4 +1,14 @@
 :root {
+        // Colors
+        --light-purple: hsl(305deg 25% 71%);
+        --dark-purple: hsl(306deg 62% 12%);
+        --purple: hsl(299deg 52% 32%);
+        --accent-purple: hsl(269deg 39% 47%);
+        --all-white: hsl(0deg 0% 96%);
+        --all-black: hsl(0deg 0% 7%);
+        --white: var(--all-white);
+        --black: var(--all-black);
+
         // Font-Family
         --font-sans: 'Epilogue', system-ui, -apple-system, roboto, oxygen, ubuntu, cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
@@ -24,7 +34,7 @@
         --space-3xl: clamp(5.25rem, 4.4674rem + 3.913vw, 7.5rem);
 
         // Shadows
-        --shadow-color: 286deg 36% 56%;
+        --shadow-color: 306deg 62% 12%;
         --shadow-elevation-low:
                 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 34%),
                 0.4px 0.8px 1px -1.2px hsl(var(--shadow-color) / 34%),
@@ -44,5 +54,21 @@
                 17px 33.9px 42.7px -2.1px hsl(var(--shadow-color) / 34%),
                 25px 50px 62.9px -2.5px hsl(var(--shadow-color) / 34%);
 
+
+        font-size: 15px;
+        font-family: var(--font-sans);
+        color-scheme: light dark;
+}
+
+* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font: inherit;
+}
+
+#root {
+        min-height: 100vh;
+        overflow-x: hidden;
 
 }
