@@ -8,10 +8,6 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
-    testTransformMode: {
-      /**@ts-ignore*/
-      web: [/\.tsx?$/],
-    },
     setupFiles: './setupVitest.ts',
   },
   resolve: {
