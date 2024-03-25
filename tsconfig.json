@@ -23,12 +23,12 @@
 
 
     "paths": {
-      "@/*": ["src/*"],
-      "@assets/*": ["src/assets/*"],
-      "@components/*": ["src/components/*"], 
-      "@composables/*": ["src/composables/*"],
-      "@store/*": ["src/store/*"],
-      "@scss/*": ["src/scss/*"]
+      "@/*": ["./src/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@components/*": [".src/components/*"], 
+      "@composables/*": [".src/composables/*"],
+      "@store/*": [".src/store/*"],
+      "@scss/*": [".src/scss/*"]
     }
 
   },
