@@ -1,0 +1,31 @@
+.header {
+        justify-content: space-between;
+        padding: 1rem 0;
+
+        &,
+        &-logo,
+        &-settings-btn {
+                display: flex;
+                align-items: center;
+        }
+
+
+        &-logo {
+                --icon-size: var(--step-4);
+
+                gap: 0.45rem;
+
+                strong {
+                        font-size: var(--step-3);
+                        margin-top: var(--step-n1);
+                }
+        }
+
+
+        &-settings-btn {
+                --icon-size: 25px;
+
+                gap: 0.25rem;
+                padding: 0.25rem;
+        }
+}

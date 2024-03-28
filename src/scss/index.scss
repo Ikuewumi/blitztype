@@ -1,4 +1,9 @@
 :root {
+        // Z-indices
+        --z-dialog: 5;
+        --z-background: -1;
+        --z-base: auto;
+        
         // Colors
         --light-purple: hsl(305deg 25% 71%);
         --dark-purple: hsl(306deg 62% 12%);
@@ -8,6 +13,7 @@
         --all-black: hsl(0deg 0% 7%);
         --white: var(--all-white);
         --black: var(--all-black);
+        --dialog-backdrop: 299deg 5%; // Containing just hue and saturation
 
         // Font-Family
         --font-sans: 'Epilogue', system-ui, -apple-system, roboto, oxygen, ubuntu, cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -35,16 +41,16 @@
 
         // Shadows
         --shadow-color: 306deg 62% 12%;
-        --shadow-elevation-low:
+        --shadow-low:
                 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 34%),
                 0.4px 0.8px 1px -1.2px hsl(var(--shadow-color) / 34%),
                 1px 2px 2.5px -2.5px hsl(var(--shadow-color) / 34%);
-        --shadow-elevation-medium:
+        --shadow-medium:
                 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 36%),
                 0.8px 1.6px 2px -0.8px hsl(var(--shadow-color) / 36%),
                 2.1px 4.1px 5.2px -1.7px hsl(var(--shadow-color) / 36%),
                 5px 10px 12.6px -2.5px hsl(var(--shadow-color) / 36%);
-        --shadow-elevation-high:
+        --shadow-high:
                 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 34%),
                 1.5px 2.9px 3.7px -0.4px hsl(var(--shadow-color) / 34%),
                 2.7px 5.4px 6.8px -0.7px hsl(var(--shadow-color) / 34%),
@@ -58,6 +64,20 @@
         font-size: 15px;
         font-family: var(--font-sans);
         color-scheme: light dark;
+
+
+
+        @media (prefers-color-scheme: dark) {
+                --light-purple: hsl(305deg 25% 26%);
+                --dark-purple: hsl(306deg 62% 89%);
+                --purple: hsl(299deg 52% 32%);
+                --accent-purple: hsl(269deg 39% 47%);
+                --white: hsl(0deg 0% 7%);
+                --black: hsl(0deg 0% 97%);
+                --shadow-color: 306deg 62% 72%;
+
+                color-scheme: dark;
+        }
 }
 
 * {
@@ -67,8 +87,73 @@
         font: inherit;
 }
 
-#root {
-        min-height: 100vh;
-        overflow-x: hidden;
+body {
+        color: var(--black);
+        background: var(--white);
+        font-size: var(--step-0);
+}
 
+#root {
+        overflow-x: hidden;
+}
+
+[data-grid] {
+        --c-grid-offset: var(--grid-offset, 1.5rem);
+        --c-breakout-offset: var(--breakout-offset, 1rem);
+        --c-grid-width: var(--grid-width, 65rem);
+
+        display: grid;
+        grid-template-columns: [full-start left-start] 
+                minmax(var(--c-grid-offset), 1fr) [right-start content-start] 
+                minmax(auto, var(--c-grid-width)) [content-end left-end]
+                minmax(var(--c-grid-offset), 1fr) [right-end full-end];
+
+        & > *{
+               grid-column: content; 
+        }
+}
+
+
+svg {
+        width: var(--icon-size, 30px);
+}
+
+svg, picture, figure, img, video {
+        max-width: 100%;
+}
+
+
+h1, h2, h3, h4, h5, h6, strong, b {
+        font-weight: 700;
+}
+
+h1 {
+        font-size: var(--step-5);
+}
+
+h2 {
+        font-size: var(--step-4);
+}
+
+h3 {
+        font-size: var(--step-3);
+}
+
+h4 {
+        font-size: var(--step-2);
+}
+
+.sr-only {
+    border: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    /* stylelint-disable-next-line property-no-vendor-prefix */
+    -webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;
+    height: 1px !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    white-space: nowrap !important;
 }

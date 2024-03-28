@@ -1,7 +1,14 @@
-function App () {
+import { type JSXElement } from 'solid-js'
+import Header from './components/Header'
+import { Dialogs } from './components/dialogs'
+
+const App = (): JSXElement => {
   return (
     <>
-      <p>Instant Code</p>
+      <Header />
+      <main>
+        <Dialogs />
+      </main>
     </>
   )
 }
