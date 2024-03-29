@@ -17,7 +17,7 @@ export default defineConfig({
       '@composables': path.resolve(__dirname, './src/composables'),
       '@components': path.resolve(__dirname, './src/components'),
       '@data': path.resolve(__dirname, './src/data'),
-      '@store': path.resolve(__dirname, './src/store'),
+      '@stores': path.resolve(__dirname, './src/stores'),
       '@scss': path.resolve(__dirname, './src/scss')
     },
     conditions: ['development', 'browser'],

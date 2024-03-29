@@ -28,7 +28,7 @@
       "@components/*": ["./src/components/*"], 
       "@composables/*": ["./src/composables/*"],
       "@data/*": ["./src/data/*"],
-      "@store/*": ["./src/store/*"],
+      "@stores/*": ["./src/stores/*"],
       "@scss/*": ["./src/scss/*"]
     }
 

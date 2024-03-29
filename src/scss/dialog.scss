@@ -25,37 +25,74 @@ details {
 
 .settings {
         &-dialog {
-                display: grid;
+                display: none;
+                padding-top: min(4vmax, 5ch);
                 place-items: center;
-                place-content: center;
+                place-content: start;
                 position: fixed;
+                width: 100vw;
+                height: 100vh;
+                overflow-y: auto;
                 inset: 0;
-                width: 100%;
-                height: 100%;
                 z-index: var(--z-dialog);
                 background: hsl(var(--dialog-backdrop) 10% / 95%);
+
+                &[data-open="true"] {
+                        display: grid;
+                }
         }
 
         &-wrapper {
-                --details-padding: var(--space-3xs) var(--space-m) var(--space-2xs);
+                --details-padding: var(--space-3xs) var(--space-m);
                 --summary-padding: 0.75rem var(--space-m);
+                --icon-size: 25px;
 
                 display: grid;
                 gap: var(--space-xs);
                 align-items: center;
+                position: relative;
                 width: min(500px, 100%);
                 padding: var(--space-m) 0 var(--space-l);
                 background: var(--white);
                 color: var(--black);
                 border: 2px solid var(--light-purple);
                 border-radius: var(--space-3xs);
-                box-shadow: 0 0 7px -2px hsl(var(--shadow-color) / 35%);
+                box-shadow: 0 0 0 2px var(--light-purple);
+
+                select {
+                        --select-border: 1px solid hsl(var(--shadow-color) / 20%);
+                }
         }
 
         &-title {
                 font-size: var(--step-4);
                 padding-inline: var(--space-m);
+                padding-block: 0 var(--space-xs);
         }
+
+        &-close {
+                --icon-size: 22.5px;
+                --offset: var(--space-xs);
+
+                display: flex;
+                place-items: center;
+                place-content: center;
+                position: absolute;
+                inset: var(--offset) var(--offset) auto auto;
+                color: var(--dark-purple);
+                background: var(--light-purple);
+                padding: 0.25rem 0.45rem 0.3rem;
+                border: 0;
+                border-radius: 0.25rem;
+                box-shadow: 0 0 4px -1px hsl(var(--shadow-color) / 35%);
+
+
+                &:focus-visible {
+                        outline: 2px solid currentcolor;
+                        outline-offset: 3px;
+                }
+        }
+
 
 
 }
@@ -78,15 +115,19 @@ details {
 
 .theme-button {
         position: relative;
-        padding: 0.85rem 0.85rem 0.75rem;
+        padding: 0.95rem 1.25rem 0.8rem;
         background: hsl(var(--bg));
         color: hsl(var(--clr));
         line-height: 0.7;
         border-radius: var(--space-3xs);
-        border: 1px solid hsl(var(--clr) / 50%);
+        border: 1px solid hsl(var(--clr) / 10%);
+        text-transform: uppercase;
         font-size: var(--step-0);
-        font-weight: 500;
+        font-weight: 600;
         cursor: pointer;
+        box-shadow:
+                0 1px 2px -1px hsl(var(--shadow-color) / 70%),
+                0 0 1px 0 hsl(var(--shadow-color) / 90%);
 
 
         &[class] {
@@ -101,12 +142,12 @@ details {
 
 .settings-subject {
         &-field {
-                display: grid;
+                display: flex;
                 gap: 0.5rem;
+                align-items: center;
         }
 
         &-select {
-                padding: 0.35rem;
                 width: fit-content;
         }
 
@@ -114,6 +155,27 @@ details {
                 font-size: var(--step-n1);
                 text-align: right;
         }
+}
 
 
+.settings-mode {
+        &-fields,
+        &-field {
+                display: flex;
+                align-items: center;
+        }
+
+        &-fields {
+                flex-wrap: wrap;
+                justify-content: start;
+                gap: var(--space-m);
+        }
+
+        &-field {
+                gap: 0.5rem;
+        }
+
+        &-label svg {
+                color: var(--black);
+        }
 }

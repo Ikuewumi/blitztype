@@ -3,7 +3,7 @@
         --z-dialog: 5;
         --z-background: -1;
         --z-base: auto;
-        
+
         // Colors
         --light-purple: hsl(305deg 25% 71%);
         --dark-purple: hsl(306deg 62% 12%);
@@ -16,7 +16,7 @@
         --dialog-backdrop: 299deg 5%; // Containing just hue and saturation
 
         // Font-Family
-        --font-sans: 'Epilogue', system-ui, -apple-system, roboto, oxygen, ubuntu, cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        --font-sans:'Poppins', 'Epilogue', system-ui, -apple-system, roboto, oxygen, ubuntu, cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
         // Font size
         --step-n2: clamp(0.6076rem, 0.5407rem + 0.3345vw, 0.8rem);
@@ -85,6 +85,7 @@
         padding: 0;
         box-sizing: border-box;
         font: inherit;
+        line-height: 0.8; // The Font Calculates the Extensions of the long letters into it's height
 }
 
 body {
@@ -94,22 +95,20 @@ body {
 }
 
 #root {
+        width: 100vw;
         overflow-x: hidden;
 }
 
 [data-grid] {
         --c-grid-offset: var(--grid-offset, 1.5rem);
         --c-breakout-offset: var(--breakout-offset, 1rem);
-        --c-grid-width: var(--grid-width, 65rem);
+        --c-grid-width: var(--grid-width, 60rem);
 
         display: grid;
-        grid-template-columns: [full-start left-start] 
-                minmax(var(--c-grid-offset), 1fr) [right-start content-start] 
-                minmax(auto, var(--c-grid-width)) [content-end left-end]
-                minmax(var(--c-grid-offset), 1fr) [right-end full-end];
+        grid-template-columns: [full-start left-start] minmax(var(--c-grid-offset), 1fr) [right-start content-start] minmax(auto, var(--c-grid-width)) [content-end left-end] minmax(var(--c-grid-offset), 1fr) [right-end full-end];
 
-        & > *{
-               grid-column: content; 
+        &>* {
+                grid-column: content;
         }
 }
 
@@ -118,12 +117,23 @@ svg {
         width: var(--icon-size, 30px);
 }
 
-svg, picture, figure, img, video {
+svg,
+picture,
+figure,
+img,
+video {
         max-width: 100%;
 }
 
 
-h1, h2, h3, h4, h5, h6, strong, b {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+b {
         font-weight: 700;
 }
 
@@ -143,17 +153,58 @@ h4 {
         font-size: var(--step-2);
 }
 
+button {
+        cursor: pointer;
+}
+
+.select-wrapper {
+        --c-select-wrapper-padding: var(--select-wrapper-padding, 0.45rem);
+        --icon-size: 20px;
+
+        position: relative;
+        width: fit-content;
+
+
+       svg {
+                position: absolute;
+                inset: 50% var(--c-select-wrapper-padding) auto auto;
+                transform: translateY(-50%);
+                color: var(--black);
+                z-index: 2;
+                pointer-events: none;
+        }
+}
+
+select {
+        --c-select-clr: var(--select-clr, var(--black));
+        --c-select-bg: var(--select-bg, var(--white));
+        --c-select-padding: var(--select-padding, 0.65rem 1.85rem 0.65rem 0.75rem);
+        --c-select-radius: var(--select-radius, 0.25rem);
+        --c-select-border: var(--select-border, 0.1px solid currentcolor);
+        --c-select-shadow: var(--select-shadow, 0 0 3px -2px hsl(var(--shadow-color) / 35%));
+
+        background: var(--c-select-bg);
+        color: var(--c-select-clr);
+        border: var(--c-select-border);
+        border-radius: var(--c-select-radius);
+        padding: var(--c-select-padding);
+        box-shadow: var(--c-select-shadow);
+        position: relative;
+        appearance: none;
+        line-height: 1;
+}
+
 .sr-only {
-    border: 0 !important;
-    clip: rect(1px, 1px, 1px, 1px) !important;
-    /* stylelint-disable-next-line property-no-vendor-prefix */
-    -webkit-clip-path: inset(50%) !important;
-    clip-path: inset(50%) !important;
-    height: 1px !important;
-    margin: -1px !important;
-    overflow: hidden !important;
-    padding: 0 !important;
-    position: absolute !important;
-    width: 1px !important;
-    white-space: nowrap !important;
+        border: 0 !important;
+        clip: rect(1px, 1px, 1px, 1px) !important;
+        /* stylelint-disable-next-line property-no-vendor-prefix */
+        -webkit-clip-path: inset(50%) !important;
+        clip-path: inset(50%) !important;
+        height: 1px !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        padding: 0 !important;
+        position: absolute !important;
+        width: 1px !important;
+        white-space: nowrap !important;
 }
