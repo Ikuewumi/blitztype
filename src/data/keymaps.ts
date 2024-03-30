@@ -19,4 +19,3 @@ export const KEYMAPS: KeyMap[] = [
   { keyCode: 'K', ctrlKey: true, function: changeShowSettings },
   { keyCode: 'Escape', ctrlKey: false, function: changeShowSettings.bind(null, false) }
 ]
-

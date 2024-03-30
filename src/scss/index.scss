@@ -16,7 +16,7 @@
         --dialog-backdrop: 299deg 5%; // Containing just hue and saturation
 
         // Font-Family
-        --font-sans:'Poppins', 'Epilogue', system-ui, -apple-system, roboto, oxygen, ubuntu, cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        --font-sans:'Epilogue', system-ui, -apple-system, roboto, oxygen, ubuntu, cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
         // Font size
         --step-n2: clamp(0.6076rem, 0.5407rem + 0.3345vw, 0.8rem);
@@ -63,11 +63,11 @@
 
         font-size: 15px;
         font-family: var(--font-sans);
-        color-scheme: light dark;
+        color-scheme: light;
 
 
 
-        @media (prefers-color-scheme: dark) {
+        &[data-theme="dark"] {
                 --light-purple: hsl(305deg 25% 26%);
                 --dark-purple: hsl(306deg 62% 89%);
                 --purple: hsl(299deg 52% 32%);
@@ -178,7 +178,7 @@ button {
 select {
         --c-select-clr: var(--select-clr, var(--black));
         --c-select-bg: var(--select-bg, var(--white));
-        --c-select-padding: var(--select-padding, 0.65rem 1.85rem 0.65rem 0.75rem);
+        --c-select-padding: var(--select-padding, 0.75rem 1.85rem 0.75rem 0.75rem);
         --c-select-radius: var(--select-radius, 0.25rem);
         --c-select-border: var(--select-border, 0.1px solid currentcolor);
         --c-select-shadow: var(--select-shadow, 0 0 3px -2px hsl(var(--shadow-color) / 35%));

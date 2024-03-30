@@ -1,7 +1,11 @@
-import { subjects } from '@data/subjects'
-import { atom, computed } from 'nanostores'
+import { checkIndexValidity } from '@/composables/engine'
+import { THEME_KEY, getUserTheme } from '@/composables/localStorage'
+import { MODES } from '@/data/modes'
+import { SUBJECTS } from '@data/subjects'
+import { THEMES } from '@data/themes'
+import { atom, computed, map } from 'nanostores'
 
-export const $showSettingsDialog = atom(false)
+export const $showSettingsDialog = atom(true)
 
 /**
  * Change whether the settings dialog / modal is seen
@@ -17,31 +21,39 @@ export const changeShowSettings = (showSettings?: boolean): void => {
   $showSettingsDialog.set(newState)
 }
 
-export interface Theme {
-  /** Name of the Theme */
-  name: string
+export const $theme = atom(getUserTheme())
+$theme.subscribe(theme => {
+  localStorage.setItem(THEME_KEY, `${theme}`)
 
-  /** the background, and text color of the theme respectively */
-  colors: [string, string]
+  const html = document.querySelector('html') as unknown as HTMLHtmlElement
+  html.setAttribute('data-theme', THEMES[theme].name.toLowerCase())
+})
+export const changeTheme = (index: number): void => {
+  checkIndexValidity(index, THEMES)
+  $theme.set(index)
 }
 
-export const THEMES = [
-  { name: 'Classic', colors: ['0deg 0% 96%', '0deg 0% 7%'] },
-  { name: 'Dark', colors: ['0deg 0% 7%', '0deg 0% 97%'] }
-] as Theme[]
+const defaultIndices = { mode: 0, time: 0, subject: 0, theme: 0 }
+type Index = keyof typeof defaultIndices
 
-/** Store of index of user theme in THEMES. Defaults to 0 for classic */
-export const $themeIndex = atom(0)
+export const $indices = map(defaultIndices)
+export const $mode = computed($indices, ({ mode }) => MODES[mode])
 
-/** computed store of user-theme */
-export const $theme = computed($themeIndex, (i) => {
-  return THEMES.at(i) ?? null
-})
+interface ValidationRule {
+  name: Index
+  array: any[]
+}
+const indicesValidationRules = [
+  { name: 'mode', array: MODES },
+  { name: 'time', array: $mode.get().times },
+  { name: 'subject', array: SUBJECTS },
+  { name: 'theme', array: THEMES }
+] as ValidationRule[]
 
-/** Store of index of user subject in the Subjects Array. Defaults to 0 for all words */
-export const $subjectIndex = atom(0)
-
-/** computed store of user-subject */
-export const $subject = computed($subjectIndex, (i) => {
-  return subjects.at(i) ?? null
-})
+export const changeIndices = (key: Index | string, index: number): void => {
+  const rule = indicesValidationRules.find(rule => rule.name === key)
+  if (!(rule == null)) {
+    checkIndexValidity(index, rule.array)
+    $indices.setKey(rule.name, index)
+  }
+}

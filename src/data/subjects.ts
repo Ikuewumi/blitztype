@@ -6,7 +6,7 @@ export interface Subject {
   file: string
 }
 
-export const subjects = [
+export const SUBJECTS = [
   { name: 'all words', file: '/all.json' },
   { name: 'medicine', file: '/medicine.json' },
   { name: 'engineering', file: '/engineering.json' }
