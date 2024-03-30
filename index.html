@@ -9,18 +9,61 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet">
-  <title>Vite + Solid + TS</title>
+  <title>blitzType</title>
 </head>
 
 <body>
-  <div id="root"></div>
+  <div id="root" data-grid></div>
   <svg style="display: none;">
     <symbol viewBox="0 0 24 24" id="logo">
       <path fill="currentColor"
         d="M20 13h-4c0 1.1-.9 2-2 2h-4c-1.1 0-2-.9-2-2H4l-2 5v2c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-2M6 20c-.89 0-1.34-1.08-.71-1.71c.63-.63 1.71-.18 1.71.71c0 .55-.45 1-1 1m4 0c-.89 0-1.34-1.08-.71-1.71c.63-.63 1.71-.18 1.71.71c0 .55-.45 1-1 1m4 0c-.89 0-1.34-1.08-.71-1.71c.63-.63 1.71-.18 1.71.71c0 .55-.45 1-1 1m4 0c-.89 0-1.34-1.08-.71-1.71c.63-.63 1.71-.18 1.71.71c0 .55-.45 1-1 1m0-10V3H6v7H3v2h18v-2M8 5h8v1H8m0 1h6v1H8">
       </path>
     </symbol>
+    <symbol viewBox="0 0 24 24" id="setting-options">
+      <path fill="currentColor"
+        d="M7.5 15H9v-4H7.5v1.25H6v1.5h1.5zm2.5-1.25h8v-1.5h-8zM15 11h1.5V9.75H18v-1.5h-1.5V7H15zM6 9.75h8v-1.5H6zM8 21v-2H4q-.825 0-1.412-.587T2 17V5q0-.825.588-1.412T4 3h16q.825 0 1.413.588T22 5v12q0 .825-.587 1.413T20 19h-4v2zm-4-4h16V5H4zm0 0V5z">
+      </path>
+    </symbol>
+    <symbol viewBox="0 0 24 24" id="settings-logo">
+      <path fill="currentColor"
+        d="m9.25 22l-.4-3.2q-.325-.125-.612-.3t-.563-.375L4.7 19.375l-2.75-4.75l2.575-1.95Q4.5 12.5 4.5 12.338v-.675q0-.163.025-.338L1.95 9.375l2.75-4.75l2.975 1.25q.275-.2.575-.375t.6-.3l.4-3.2h5.5l.4 3.2q.325.125.613.3t.562.375l2.975-1.25l2.75 4.75l-2.575 1.95q.025.175.025.338v.674q0 .163-.05.338l2.575 1.95l-2.75 4.75l-2.95-1.25q-.275.2-.575.375t-.6.3l-.4 3.2zm2.8-6.5q1.45 0 2.475-1.025T15.55 12q0-1.45-1.025-2.475T12.05 8.5q-1.475 0-2.488 1.025T8.55 12q0 1.45 1.013 2.475T12.05 15.5">
+      </path>
+    </symbol>
+    <symbol viewBox="0 0 24 24" id="checked-rounded">
+      <path fill="currentColor"
+        d="m10 13.6l5.9-5.9q.275-.275.7-.275t.7.275q.275.275.275.7t-.275.7l-6.6 6.6q-.3.3-.7.3t-.7-.3l-2.6-2.6q-.275-.275-.275-.7t.275-.7q.275-.275.7-.275t.7.275z">
+      </path>
+    </symbol>
+    <symbol viewBox="0 0 24 24" id="options">
+      <g fill="none" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 8h9m4 0h3m-9 8h9M4 16h3"></path>
+        <circle cx="9" cy="16" r="2"></circle>
+        <circle cx="15" cy="8" r="2"></circle>
+      </g>
+    </symbol>
+    <symbol viewBox="0 0 24 24" id="timer">
+      <path fill="currentColor"
+        d="M9 3V1h6v2zm2 11h2V8h-2zm1 8q-1.85 0-3.488-.712T5.65 19.35q-1.225-1.225-1.937-2.863T3 13q0-1.85.713-3.488T5.65 6.65q1.225-1.225 2.863-1.937T12 4q1.55 0 2.975.5t2.675 1.45l1.4-1.4l1.4 1.4l-1.4 1.4Q20 8.6 20.5 10.025T21 13q0 1.85-.713 3.488T18.35 19.35q-1.225 1.225-2.863 1.938T12 22">
+      </path>
+    </symbol>
+    <symbol viewBox="0 0 24 24" id="close">
+      <path fill="currentColor"
+        d="m12 13.4l-4.9 4.9q-.275.275-.7.275t-.7-.275q-.275-.275-.275-.7t.275-.7l4.9-4.9l-4.9-4.9q-.275-.275-.275-.7t.275-.7q.275-.275.7-.275t.7.275l4.9 4.9l4.9-4.9q.275-.275.7-.275t.7.275q.275.275.275.7t-.275.7L13.4 12l4.9 4.9q.275.275.275.7t-.275.7q-.275.275-.7.275t-.7-.275z">
+      </path>
+    </symbol>
+    <symbol viewBox="0 0 24 24" id="arrow-down">
+      <path fill="currentColor"
+        d="M12 14.975q-.2 0-.375-.062T11.3 14.7l-4.6-4.6q-.275-.275-.275-.7t.275-.7q.275-.275.7-.275t.7.275l3.9 3.9l3.9-3.9q.275-.275.7-.275t.7.275q.275.275.275.7t-.275.7l-4.6 4.6q-.15.15-.325.213t-.375.062">
+      </path>
+    </symbol>
+    <symbol viewBox="0 0 24 24" id="books">
+      <path fill="currentColor"
+        d="M11 14h2q.425 0 .713-.288T14 13q0-.425-.288-.712T13 12h-2q-.425 0-.712.288T10 13q0 .425.288.713T11 14m0-3h6q.425 0 .713-.288T18 10q0-.425-.288-.712T17 9h-6q-.425 0-.712.288T10 10q0 .425.288.713T11 11m0-3h6q.425 0 .713-.288T18 7q0-.425-.288-.712T17 6h-6q-.425 0-.712.288T10 7q0 .425.288.713T11 8M8 18q-.825 0-1.412-.587T6 16V4q0-.825.588-1.412T8 2h12q.825 0 1.413.588T22 4v12q0 .825-.587 1.413T20 18zm0-2h12V4H8zm-4 6q-.825 0-1.412-.587T2 20V7q0-.425.288-.712T3 6q.425 0 .713.288T4 7v13h13q.425 0 .713.288T18 21q0 .425-.288.713T17 22zM8 4v12z">
+      </path>
+    </symbol>
   </svg>
+
   <script type="module" src="/src/index.tsx"></script>
 </body>
 

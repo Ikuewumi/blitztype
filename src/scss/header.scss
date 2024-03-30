@@ -1,0 +1,55 @@
+.header {
+        &,
+        &-logo,
+        &-settings-btn {
+                display: flex;
+        }
+
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 0;
+
+
+        &-logo {
+                --icon-size: var(--step-4);
+
+                align-items: center;
+                gap: 0.45rem;
+
+                svg {
+                        display: none;
+                }
+
+                strong {
+                        font-size: var(--step-4);
+                        line-height: 0.8;
+                        margin-top: var(--step-n1);
+                }
+        }
+
+
+        &-settings-btn {
+                align-items: center;
+                gap: 0.45rem;
+                padding: 0.8rem 1rem;
+                margin-top: 0.5rem;
+                background: var(--white);
+                color: var(--black);
+                border: none;
+                border-radius: var(--space-3xs);
+                line-height: 0.8;
+                box-shadow: 0 0 6px -4px hsl(var(--shadow-color) / 60%), 0 0 0 2px hsl(var(--shadow-color) / 20%);
+                transition: 200ms ease-in;
+
+                &:hover, &:focus-visible {
+                        background: var(--dark-purple);
+                        color: var(--white);
+                        box-shadow: none;
+                }
+
+                &:focus-visible {
+                        transition: none;
+                }
+        }
+
+}

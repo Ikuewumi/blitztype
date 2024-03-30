@@ -16,7 +16,8 @@ export default defineConfig({
       '@assets': path.resolve(__dirname, './src/assets'),
       '@composables': path.resolve(__dirname, './src/composables'),
       '@components': path.resolve(__dirname, './src/components'),
-      '@store': path.resolve(__dirname, './src/store'),
+      '@data': path.resolve(__dirname, './src/data'),
+      '@stores': path.resolve(__dirname, './src/stores'),
       '@scss': path.resolve(__dirname, './src/scss')
     },
     conditions: ['development', 'browser'],

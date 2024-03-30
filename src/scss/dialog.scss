@@ -1,0 +1,184 @@
+dialog {
+        border: none;
+}
+
+
+details {
+        --c-summary-bg: var(--summary-bg, var(--light-purple));
+        --c-summary-clr: var(--summary-clr, var(--dark-purple));
+        --c-summary-gap: var(--summary-gap, 0.5rem);
+        --c-summary-padding: var(--summary-padding, 0.75rem 1rem);
+        --c-details-padding: var(--details-padding, 0.5rem);
+
+        summary {
+                background: var(--c-summary-bg);
+                color: var(--c-summary-clr);
+                padding: var(--c-summary-padding);
+                position: relative;
+        }
+
+        summary+* {
+                margin-top: var(--c-summary-gap);
+                padding: var(--c-details-padding);
+        }
+}
+
+.settings {
+        &-dialog {
+                display: none;
+                padding-top: min(4vmax, 5ch);
+                place-items: center;
+                place-content: start;
+                position: fixed;
+                width: 100vw;
+                height: 100vh;
+                overflow-y: auto;
+                inset: 0;
+                z-index: var(--z-dialog);
+                background: hsl(var(--dialog-backdrop) 10% / 95%);
+
+                &[data-open="true"] {
+                        display: grid;
+                }
+        }
+
+        &-wrapper {
+                --details-padding: var(--space-3xs) var(--space-m);
+                --summary-padding: 1rem var(--space-m);
+                --icon-size: 25px;
+
+                display: grid;
+                gap: var(--space-xs);
+                align-items: center;
+                position: relative;
+                width: min(500px, 100%);
+                padding: var(--space-m) 0 var(--space-l);
+                background: var(--white);
+                color: var(--black);
+                border: 2px solid var(--light-purple);
+                border-radius: var(--space-3xs);
+                box-shadow: 0 0 0 2px var(--light-purple);
+
+                select {
+                        --select-border: 1px solid hsl(var(--shadow-color) / 20%);
+                }
+        }
+
+        &-title {
+                font-size: var(--step-4);
+                padding-inline: var(--space-m);
+                padding-block: 0 var(--space-3xs);
+        }
+
+        &-close {
+                --icon-size: 22.5px;
+                --offset: var(--space-xs);
+
+                display: flex;
+                place-items: center;
+                place-content: center;
+                position: absolute;
+                inset: var(--offset) var(--offset) auto auto;
+                color: var(--dark-purple);
+                background: var(--light-purple);
+                padding: 0.25rem 0.45rem 0.3rem;
+                border: 0;
+                border-radius: 0.25rem;
+                box-shadow: 0 0 4px -1px hsl(var(--shadow-color) / 35%);
+
+
+                &:focus-visible {
+                        outline: 2px solid currentcolor;
+                        outline-offset: 3px;
+                }
+        }
+
+
+
+}
+
+
+.settings-themes {
+        &-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: var(--space-xs);
+
+                li {
+                        display: contents;
+                }
+        }
+
+}
+
+
+
+.theme-button {
+        position: relative;
+        padding: 1.05rem 1.5rem 0.9rem;
+        background: hsl(var(--bg));
+        color: hsl(var(--clr));
+        line-height: 0.7;
+        border-radius: var(--space-3xs);
+        border: 1px solid hsl(var(--clr) / 10%);
+        outline-offset: -5px;
+        text-transform: uppercase;
+        font-size: var(--step-0);
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow:
+                0 1px 2px -1px hsl(var(--shadow-color) / 70%),
+                0 0 1px 0 hsl(var(--shadow-color));
+
+
+        &[data-theme="true"] {
+                --offset: 3px;
+
+                box-shadow: 0 0 0 var(--offset) var(--light-purple);
+
+                
+        }
+}
+
+
+
+
+.settings-subject {
+        &-field {
+                display: flex;
+                gap: 0.5rem;
+                align-items: center;
+        }
+
+        &-select {
+                width: fit-content;
+        }
+
+        &-small {
+                font-size: var(--step-n1);
+                text-align: right;
+        }
+}
+
+
+.settings-mode {
+        &-fields,
+        &-field {
+                display: flex;
+                align-items: center;
+        }
+
+        &-fields {
+                flex-wrap: wrap;
+                justify-content: start;
+                gap: var(--space-m);
+        }
+
+        &-field {
+                gap: 0.5rem;
+        }
+
+        &-label svg {
+                color: var(--black);
+        }
+}
