@@ -6,7 +6,7 @@ import { SUBJECTS } from '@data/subjects'
 import { MODES } from '@/data/modes'
 import { $showSettingsDialog, changeShowSettings, $indices, changeIndices, $theme, changeTheme } from '@stores/settings'
 import { useStore } from '@nanostores/solid'
-import { getFormattedTime } from '@/composables/engine'
+import { getFormattedTimeString } from '@/composables/utils'
 
 interface ThemeButtonProps {
   index: number
@@ -108,7 +108,7 @@ export const SettingsDialog = (): JSXElement => {
                 <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#arrow-down"></use></svg>
                 <select ref={timeSelect} onChange={changeSettings} name="time" id="settings-time" class="settings-mode-select">
                   <For each={MODES[indices().mode].times}>
-                    {(time, index) => <option value={index()} >{getFormattedTime(time).string}</option>}
+                    {(time, index) => <option value={index()} >{getFormattedTimeString(time)}</option>}
                   </For>
                 </select>
               </div>

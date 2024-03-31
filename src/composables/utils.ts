@@ -1,17 +1,24 @@
-export const getFormattedTime = (seconds: number): { string: string, number: number[] } => {
+export const getFormattedTimeString = (seconds: number): string => {
   const secondsCount = seconds % 60
   const minuitesCount = Math.floor(seconds / 60)
 
   let string = `${secondsCount} secs`
-  const number = [minuitesCount, secondsCount]
   if (minuitesCount > 0) {
     string = `${minuitesCount} ${minuitesCount > 1 ? 'mins' : 'min'} ${secondsCount > 0 ? ` ${secondsCount} seconds` : ''}`
   }
 
-  return {
-    string,
-    number
+  return string
+}
+
+export const getFormattedTimeNumber = (seconds: number): [string, string] => {
+  const secondsCount = seconds % 60
+  const minuitesCount = Math.floor(seconds / 60)
+
+  const prettifyNumber = (num: number): string => {
+    return num > 9 ? `${num}` : `0${num}`
   }
+
+  return [prettifyNumber(minuitesCount), prettifyNumber(secondsCount)]
 }
 
 export const checkIndexValidity = (index: number, array: any[]): void => {

@@ -1,6 +1,7 @@
 import { type JSXElement } from 'solid-js'
 import Header from '@components/Header'
-import { Dialogs } from '@components/dialogs'
+import { Dialogs } from '@components/Dialogs'
+import { GameComponent } from './components/Game'
 import { startKeyMaps } from '@composables/keymaps'
 
 const App = (): JSXElement => {
@@ -11,6 +12,7 @@ const App = (): JSXElement => {
       <Header />
       <main>
         <Dialogs />
+        <GameComponent />
       </main>
     </>
   )
