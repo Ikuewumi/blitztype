@@ -52,11 +52,11 @@ details {
                 align-items: center;
                 position: relative;
                 width: min(500px, 100%);
-                padding: var(--space-m) 0 var(--space-l);
-                background: var(--white);
+                padding: var(--space-s) 0 var(--space-m);
+                background: var(--dwhite);
                 color: var(--black);
                 border: 2px solid var(--light-purple);
-                border-radius: var(--space-3xs);
+                border-radius: 0.25rem;
                 box-shadow: 0 0 0 2px var(--light-purple);
 
                 select {
@@ -65,7 +65,11 @@ details {
         }
 
         &-title {
+                opacity: 0.85;
+                color: var(--dark-purple);
+                font-family: var(--font-display);
                 font-size: var(--step-4);
+                letter-spacing: -2px;
                 padding-inline: var(--space-m);
                 padding-block: 0 var(--space-s);
         }
@@ -136,21 +140,26 @@ details {
 
                 box-shadow: 0 var(--offset) 0 var(--offset) var(--light-purple);
 
-                
+
         }
 }
 
-
+.settings-subject,
+.settings-mode {
+        &-field {
+                gap: 0.5rem;
+        }
+}
 
 
 .settings-subject {
         &-field {
                 display: flex;
-                gap: 0.25rem;
                 align-items: center;
         }
 
         &-select {
+                text-transform: lowercase;
                 width: fit-content;
         }
 
@@ -174,9 +183,6 @@ details {
                 gap: var(--space-m);
         }
 
-        &-field {
-                gap: 0.5rem;
-        }
 
         &-label svg {
                 color: var(--black);

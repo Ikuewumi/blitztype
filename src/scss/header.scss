@@ -20,10 +20,13 @@
                         display: none;
                 }
 
-                strong {
-                        font-size: var(--step-4);
-                        line-height: 0.8;
-                        margin-top: var(--step-n1);
+                h1 {
+                        font-family: var(--font-display);
+                        font-size: var(--step-3);
+                        color: var(--dark-purple);
+                        opacity: 0.65;
+                        letter-spacing: -2px;
+                        line-height: 1;
                 }
         }
 
@@ -32,7 +35,6 @@
                 align-items: center;
                 gap: 0.45rem;
                 padding: 0.8rem 1rem;
-                margin-top: 0.5rem;
                 background: var(--white);
                 color: var(--black);
                 border: none;
@@ -42,8 +44,8 @@
                 transition: 200ms ease-in;
 
                 &:hover, &:focus-visible {
-                        background: var(--dark-purple);
-                        color: var(--white);
+                        background: var(--light-purple);
+                        color: var(--black);
                         box-shadow: none;
                 }
 

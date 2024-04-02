@@ -7,6 +7,6 @@ export interface Theme {
 }
 
 export const THEMES = [
-  { name: 'Classic', colors: ['0deg 0% 96%', '0deg 0% 7%'] },
+  { name: 'Classic', colors: ['0deg 0% 100%', '0deg 0% 7%'] },
   { name: 'Dark', colors: ['0deg 0% 7%', '0deg 0% 97%'] }
 ] as Theme[]

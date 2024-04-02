@@ -1,9 +1,10 @@
 import { checkIndexValidity } from '@/composables/utils'
 import { THEME_KEY, getUserTheme } from '@/composables/localStorage'
 import { MODES } from '@/data/modes'
-import { SUBJECTS } from '@data/subjects'
+import { $SUBJECTS } from '@data/subjects'
 import { THEMES } from '@data/themes'
 import { atom, computed, map } from 'nanostores'
+import { stopGame } from './game'
 
 export const $showSettingsDialog = atom(false)
 
@@ -40,6 +41,8 @@ export const $indices = map(defaultIndices)
 export const $mode = computed($indices, ({ mode }) => MODES[mode])
 export const $userTime = computed($indices, ({ mode, time }) => MODES[mode].times[time])
 
+$indices.subscribe(stopGame)
+
 interface ValidationRule {
   name: Index
   array: any[]
@@ -47,7 +50,7 @@ interface ValidationRule {
 const indicesValidationRules = [
   { name: 'mode', array: MODES },
   { name: 'time', array: $mode.get().times },
-  { name: 'subject', array: SUBJECTS },
+  { name: 'subject', array: () => $SUBJECTS.get() },
   { name: 'theme', array: THEMES }
 ] as ValidationRule[]
 

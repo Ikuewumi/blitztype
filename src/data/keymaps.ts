@@ -1,61 +1,5 @@
-import { startGame } from '@/stores/game'
-import { $mode, $userTime, changeShowSettings } from '@stores/settings'
-
-const words = [
-  'Uninterpreted',
-  'Bit',
-  'Byte',
-  'Trit',
-  'Tryte',
-  'Word',
-  'Numeric',
-  'Bignum',
-  'Complex',
-  'Decimal',
-  'Integer',
-  'signedness',
-  'Interval',
-  'Rational',
-  'Pointer',
-  'Address',
-  'physical',
-  'virtual',
-  'Reference',
-  'Text',
-  'Character',
-  'String',
-  'Composite',
-  'generalized',
-  'Array',
-  'Class',
-  'Dependent',
-  'Equality',
-  'Inductive',
-  'Intersection',
-  'List',
-  'Object',
-  'metaobject',
-  'Product',
-  'Refinement',
-  'Set',
-  'Union',
-  'tagged',
-  'Other',
-  'Boolean',
-  'Collection',
-  'Exception',
-  'Semaphore',
-  'Stream',
-  'Void',
-  'Data',
-  'Generic',
-  'Kind',
-  'metaclass',
-  'polymorphism',
-  'Interface',
-  'Subtyping',
-  'Variable'
-]
+import { start } from '@/stores/game'
+import { changeShowSettings } from '@stores/settings'
 
 /**
  * Represents the app shortcuts
@@ -70,11 +14,6 @@ export interface KeyMap {
 
   /** A callback function for when this shortcut is called */
   function: (...any: any) => any
-}
-
-const start = (): void => {
-  changeShowSettings(false)
-  startGame(words)
 }
 
 export const KEYMAPS: KeyMap[] = [

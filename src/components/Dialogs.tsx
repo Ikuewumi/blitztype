@@ -2,7 +2,7 @@
 import { For, createEffect, type JSXElement } from 'solid-js'
 import '@scss/dialog.scss'
 import { THEMES, type Theme } from '@data/themes'
-import { SUBJECTS } from '@data/subjects'
+import { $SUBJECTS } from '@data/subjects'
 import { MODES } from '@/data/modes'
 import { $showSettingsDialog, changeShowSettings, $indices, changeIndices, $theme, changeTheme } from '@stores/settings'
 import { useStore } from '@nanostores/solid'
@@ -31,6 +31,7 @@ export const SettingsDialog = (): JSXElement => {
   let closeButton = null as any as HTMLButtonElement
   let timeSelect = null as any as HTMLSelectElement
 
+  const SUBJECTS = useStore($SUBJECTS)
   const showSettings = useStore($showSettingsDialog)
   const closeModal = (): void => { changeShowSettings(false) }
   const indices = useStore($indices)
@@ -69,6 +70,7 @@ export const SettingsDialog = (): JSXElement => {
       role="dialog"
       id="settings"
       class="settings-dialog"
+      aria-labelledby="dialog-title"
       data-grid>
       <div class="settings-wrapper">
         <h2 class="settings-title">Settings</h2>
@@ -132,7 +134,7 @@ export const SettingsDialog = (): JSXElement => {
             <div class="select-wrapper">
               <svg aria-hidden="true" viewBox="0 0 24 24"><use href="#arrow-down"></use></svg>
               <select onChange={changeSettings} name="subject" id="settings-subject" class="settings-subject-select">
-                <For each={SUBJECTS}>
+                <For each={SUBJECTS()}>
                   {(subject, index) => <option value={index()}>{subject.name}</option>}
                 </For>
               </select>

@@ -1,6 +1,7 @@
 import { computed, map } from 'nanostores'
 import { $scores } from './score'
-import { $mode, $userTime } from './settings'
+import { $indices, $mode, $userTime, changeShowSettings } from './settings'
+import { $SUBJECTS } from '@/data/subjects'
 
 interface GameData {
   time: number
@@ -65,8 +66,7 @@ export const enterWord = (string: string): void => {
 $gameData.listen((newData, _, changedKey) => {
   switch (changedKey) {
     case 'gameStarted':
-      if (!newData.gameStarted) return
-      stopGame()
+      if (!newData.gameStarted) stopTimer()
       break
     case 'time':
       if (newData.time >= 1) return
@@ -76,3 +76,9 @@ $gameData.listen((newData, _, changedKey) => {
       stopGame()
   }
 })
+
+export const start = (): void => {
+  const words = $SUBJECTS.get()[$indices.get().subject].words
+  changeShowSettings(false)
+  startGame(words)
+}

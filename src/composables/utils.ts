@@ -21,8 +21,17 @@ export const getFormattedTimeNumber = (seconds: number): [string, string] => {
   return [prettifyNumber(minuitesCount), prettifyNumber(secondsCount)]
 }
 
-export const checkIndexValidity = (index: number, array: any[]): void => {
-  if (!(index >= 0 && index < array.length)) {
+export const checkIndexValidity = (index: number, array: any[] | (() => any[])): void => {
+  let checkArray: any[]
+  if (typeof array === 'function') { checkArray = array() } else { checkArray = array }
+
+  if (!(index >= 0 && index < checkArray.length)) {
     throw Error('out of bounds')
   }
+}
+
+export const sleep = async (timeInMs: number): Promise<unknown> => {
+  return await new Promise(resolve => {
+    setTimeout(resolve, timeInMs)
+  })
 }
