@@ -1,0 +1,21 @@
+.toast {
+        --offset: var(--space-m);
+
+        position: fixed;
+        inset: auto auto var(--offset) var(--offset);
+        background: var(--white);
+        border-radius: 0.25rem;
+        padding: var(--space-xs) var(--space-s);
+        color: var(--dark-purple);
+        font-size: var(--step-n1);
+        opacity: 0.85;
+        box-shadow: 0 0 2px -1px hsl(var(--shadow-color) / 80%), 0 0 0 3px hsl(var(--shadow-color) / 15%);
+        transform: scale(1);
+        transform-origin: bottom left;
+        transition: 500ms;
+
+
+        &[aria-hidden="true"] {
+                transform: scale(0);
+        }
+}

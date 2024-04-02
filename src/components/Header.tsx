@@ -8,7 +8,7 @@ const Header = (): JSXElement => {
   return (
   <header class="header">
     <figure class="header-logo">
-      <strong>blitztype</strong>
+      <h1>blitztype</h1>
     </figure>
 
     <button onClick={showModal} class="header-settings-btn" title="Open Settings Modal">
