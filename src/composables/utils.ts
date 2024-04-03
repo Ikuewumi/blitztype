@@ -1,3 +1,5 @@
+import confetti from 'canvas-confetti'
+
 export const getFormattedTimeString = (seconds: number): string => {
   const secondsCount = seconds % 60
   const minuitesCount = Math.floor(seconds / 60)
@@ -34,4 +36,12 @@ export const sleep = async (timeInMs: number): Promise<unknown> => {
   return await new Promise(resolve => {
     setTimeout(resolve, timeInMs)
   })
+}
+
+export const throwConfetti = async (timeInMs = 2000): Promise<void> => {
+  void confetti()
+
+  await sleep(timeInMs)
+
+  confetti.reset()
 }

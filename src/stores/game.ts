@@ -2,6 +2,9 @@ import { computed, map } from 'nanostores'
 import { $scores } from './score'
 import { $indices, $mode, $userTime, changeShowSettings } from './settings'
 import { $SUBJECTS } from '@/data/subjects'
+import { getModeStorageKey } from '@/composables/localStorage'
+import { throwConfetti } from '@/composables/utils'
+import { showMessage } from './toast'
 
 interface GameData {
   time: number
@@ -63,10 +66,26 @@ export const enterWord = (string: string): void => {
   }
 }
 
+const HIGH_SCORE_TIME = 3000
+const HIGH_SCORE_MESSAGE = (highScore: number): string => `Your highscore is now ${highScore} words`
+
 $gameData.listen((newData, _, changedKey) => {
   switch (changedKey) {
     case 'gameStarted':
-      if (!newData.gameStarted) stopTimer()
+      if (!newData.gameStarted) {
+        const { mode, time } = $indices.get()
+        const { currentScore, highScore } = $scores.get()
+
+        if (currentScore > highScore) {
+          // Celebrate a new High Score!
+          localStorage.setItem(getModeStorageKey(mode, time), `${currentScore}`)
+          $scores.setKey('highScore', currentScore)
+          void throwConfetti(HIGH_SCORE_TIME * 1.35)
+          void showMessage(HIGH_SCORE_MESSAGE(currentScore), HIGH_SCORE_TIME)
+        }
+
+        stopTimer()
+      }
       break
     case 'time':
       if (newData.time >= 1) return

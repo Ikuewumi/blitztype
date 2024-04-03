@@ -8,7 +8,7 @@ type JSONData = Record<string, string[]>
 
 const FILE_NAME = '/output.json'
 const MESSAGE_SUCCESS = '✅ Booting Complete'
-const MESSAGE_ERROR = '❌ Booting Failed'
+const MESSAGE_ERROR = '❌ Booting Failed. Please Refresh Page'
 const MESSAGE_LOADING = '...Booting Up Words...'
 const TOAST_CANCEL_DELAY = 2000
 

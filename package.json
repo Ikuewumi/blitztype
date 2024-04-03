@@ -20,8 +20,10 @@
     "solid-js": "^1.8.15"
   },
   "devDependencies": {
+    "@types/canvas-confetti": "^1.6.4",
     "@types/node": "^20.11.30",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "canvas-confetti": "^1.9.2",
     "eslint": "^8.0.1",
     "eslint-config-love": "^43.1.0",
     "eslint-plugin-import": "^2.25.2",
