@@ -5,7 +5,8 @@ import { GameComponent } from '@components/Game'
 import { startKeyMaps } from '@composables/keymaps'
 import { fetchWords, $allWords } from '@stores/subjects'
 import { useStore } from '@nanostores/solid'
-import { Toast } from './components/Toast'
+import { Toast } from '@components/Toast'
+import { Footer } from '@components/Footer'
 
 const App = (): JSXElement => {
   const words = useStore($allWords)
@@ -28,6 +29,7 @@ const App = (): JSXElement => {
           </Match>
         </Switch>
       </main>
+      <Footer />
     </>
   )
 }

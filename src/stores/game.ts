@@ -67,7 +67,7 @@ export const enterWord = (string: string): void => {
 }
 
 const HIGH_SCORE_TIME = 3000
-const HIGH_SCORE_MESSAGE = (highScore: number): string => `Your highscore is now ${highScore} words`
+const HIGH_SCORE_MESSAGE = (highScore: number): string => `Your highscore is now ${highScore} word${highScore > 1 ? 's' : ''}`
 
 $gameData.listen((newData, _, changedKey) => {
   switch (changedKey) {

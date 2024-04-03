@@ -17,8 +17,8 @@
         --dialog-backdrop: 299deg 5%; // Containing just hue and saturation
 
         // Font-Family
-        --font-sans:'Epilogue', system-ui, -apple-system, roboto, oxygen, ubuntu, cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; 
-        --font-display: 'JetBrains Mono', monospace;
+        --font-sans: 'Epilogue', system-ui, -apple-system, roboto, oxygen, ubuntu, cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        --font-display:  'Share Tech Mono', 'JetBrains Mono', monospace;
 
         // Font size
         --step-n2: clamp(0.6076rem, 0.5407rem + 0.3345vw, 0.8rem);
@@ -81,6 +81,32 @@
 
                 color-scheme: dark;
         }
+
+
+        &[data-theme="sepia"] {
+                --light-purple: hsl(40deg 38% 69%);
+                --dark-purple: hsl(60deg 31% 6%);
+                --all-white: hsl(42deg 62% 95%);
+                --all-black: hsl(42deg 30% 7%);
+                --dwhite: hsl(42deg 62% 89%);
+                --shadow-color: 60deg 31% 2%;
+                --dialog-backdrop: 40deg 5%; // Containing just hue and saturation
+
+                color-scheme: light;
+        }
+
+
+        &[data-theme="dlue"] {
+                --light-purple: hsl(222deg 24% 45%);
+                --dark-purple: hsl(222deg 100% 92%);
+                --all-white: hsl(240deg 5% 4%);
+                --all-black: hsl(240deg 3% 92%);
+                --dwhite: hsl(210deg 15% 10%);
+                --shadow-color: 220deg 31% 72%;
+                --dialog-backdrop: 222deg 5%; // Containing just hue and saturation
+
+                color-scheme: dark;
+        }
 }
 
 * {
@@ -101,7 +127,11 @@ body {
         width: 100vw;
         overflow-x: hidden;
         padding-bottom: var(--space-s);
+        min-height: 100vh;
+        align-content: start;
+        grid-template-rows: auto 1fr auto;
 
+        
 }
 
 [data-grid] {
@@ -112,6 +142,7 @@ body {
         display: grid;
         grid-template-columns: [full-start left-start] minmax(var(--c-grid-offset), 1fr) [right-start content-start] minmax(auto, var(--c-grid-width)) [content-end left-end] minmax(var(--c-grid-offset), 1fr) [right-end full-end];
 
+        /* stylelint-disable-next-line no-descending-specificity */
         &>* {
                 grid-column: content;
         }
@@ -170,7 +201,7 @@ button {
         width: fit-content;
 
 
-       svg {
+        svg {
                 position: absolute;
                 inset: 50% var(--c-select-wrapper-padding) auto auto;
                 transform: translateY(-50%);

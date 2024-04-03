@@ -45,13 +45,25 @@
         accent-color: var(--dark-purple);
 
 
+        @media (width >=60px) {
+                padding: var(--space-s) var(--space-m) var(--space-l);
+        }
+
+
         &-word {
                 color: var(--dark-purple);
                 text-transform: lowercase;
                 font-family: var(--font-display);
                 font-size: var(--step-4);
-                letter-spacing: -2px;
+                padding: var(--space-3xs) 0 var(--space-3xs);
                 opacity: 0.7;
+                letter-spacing: -1.5px;
+
+
+                @media (width >=600px) {
+                        letter-spacing: -2.5px;
+                        padding: 0 0 var(--space-3xs);
+                }
         }
 
 
@@ -65,10 +77,24 @@
 
 
                 @keyframes pulse {
-                        0%, 100% { opacity: 1; }
-                        20%, 80% { opacity: 0.6; }
-                        40%, 60% { opacity: 0.8; }
-                        50% { opacity: 0.5; }
+                        0%,
+                        100% {
+                                opacity: 1;
+                        }
+
+                        20%,
+                        80% {
+                                opacity: 0.6;
+                        }
+
+                        40%,
+                        60% {
+                                opacity: 0.8;
+                        }
+
+                        50% {
+                                opacity: 0.5;
+                        }
                 }
         }
 
@@ -91,19 +117,23 @@
                 opacity: 0.35;
                 outline-color: hsl(var(--shadow-color) / 50%);
 
-                &:hover, &:focus {
+                &:hover,
+                &:focus {
                         opacity: 0.65;
                 }
         }
 
 
         &-input {
+                line-height: 1;
                 padding: var(--space-xs) var(--space-s);
                 margin-top: 1.25rem;
                 min-width: 0;
                 background: var(--dwhite);
+                color: var(--black);
                 border: none;
                 outline-width: 0.5px;
+                text-transform: lowercase;
                 border-radius: 0.25rem;
                 box-shadow: 0 0 3px -2px hsl(var(--shadow-color) / 50%), 0 0 0 1px hsl(var(--shadow-color) / 20%);
 
@@ -130,9 +160,10 @@
                 }
 
                 code {
-                        font-weight: 700;
+                        font-weight: 500;
                         font-family: var(--font-display);
                         padding: 0.25rem 0.5rem 0.3rem;
+                        letter-spacing: -0.25px;
                         background: var(--dwhite);
                         border-radius: 0.25rem;
                 }
