@@ -128,6 +128,7 @@ body {
         overflow-x: hidden;
         padding-bottom: var(--space-s);
         min-height: 100vh;
+        min-height: 100dvh;
         align-content: start;
         grid-template-rows: auto 1fr auto;
 

@@ -1,10 +1,19 @@
 /// <reference types="vitest" />
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vite'
+import { VitePWA } from 'vite-plugin-pwa'
 import solid from 'vite-plugin-solid'
-import path from "path";
+import path from "path"
 
 export default defineConfig({
-  plugins: [solid()], 
+  plugins: [
+    solid(),
+    VitePWA({ 
+      registerType: 'autoUpdate',
+      workbox: {
+        globPatterns: ['**/*.{svg,woff2,woff,js,css,html,json}']
+      }
+    })
+  ], 
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

@@ -62,6 +62,7 @@ export const enterWord = (string: string): void => {
     $gameData.setKey('currentWordIndex', currentWordIndex + 1)
     $mode.get().onWordComplete?.()
   } else {
+    $mode.get().onModeComplete?.()
     stopGame()
   }
 }
