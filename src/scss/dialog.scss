@@ -69,9 +69,14 @@ details {
                 color: var(--dark-purple);
                 font-family: var(--font-display);
                 font-size: var(--step-4);
-                letter-spacing: -2px;
                 padding-inline: var(--space-m);
                 padding-block: 0 var(--space-s);
+                letter-spacing: -1.5px;
+
+
+                @media (width > 600px) {
+                        letter-spacing: -2.5px;
+                }
         }
 
         &-close {

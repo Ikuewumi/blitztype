@@ -69,7 +69,7 @@ export const GameComponent = (): JSXElement => {
           <button class="game-button" title={buttonData().title}>
             <span class="sr-only">{buttonData().title}</span>
             <svg viewBox="0 0 24 24">
-              <use href={buttonData().svgID}></use>
+              <use href={gameStarted() ? '#stop' : '#start'}></use>
             </svg>
           </button>
         </label>

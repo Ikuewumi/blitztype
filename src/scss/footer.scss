@@ -1,0 +1,27 @@
+footer {
+        margin-block: auto 0;
+        padding-bottom: var(--space-xs);
+        display: grid;
+        gap: var(--space-s);
+        color: var(--dark-purple);
+        opacity: 0.6;
+
+
+
+        a {
+                background: hsl(var(--shadow-color) / 10%);
+                border: 1px solid hsl(var(--shadow-color) / 15%);
+                border-radius: 0.25rem;
+                padding: var(--space-3xs);
+                text-decoration: underline;
+                font-weight: 600;
+                color: inherit;
+                transition: 200ms ease;
+
+
+                &:hover, &:focus {
+                        text-decoration-thickness: 3px;
+                }
+        }
+
+}
