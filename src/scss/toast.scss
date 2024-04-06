@@ -12,6 +12,8 @@
         transform: scale(1);
         transform-origin: bottom right;
         transition: 500ms;
+        z-index: var(--z-loader);
+        background-blend-mode: darken;
 
 
         &[aria-hidden="true"] {
