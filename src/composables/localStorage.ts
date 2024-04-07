@@ -1,6 +1,11 @@
+import { THEMES } from '@/data/themes'
+import { checkIndexValidity } from './utils'
+
 export const THEME_KEY = 'theme'
 export const getUserTheme = (): number => {
   const DARK_MODE_MEDIA_QUERY = '(prefers-color-scheme: dark)'
+  const isDarkMode = window.matchMedia(DARK_MODE_MEDIA_QUERY).matches ? 1 : 0 // The Indices for dark and light modes respectively
+
   let userTheme: number
 
   const lsTheme = localStorage.getItem(THEME_KEY)
@@ -9,8 +14,14 @@ export const getUserTheme = (): number => {
   if (!lsThemeInvalid) {
     userTheme = Number(lsTheme)
   } else {
-    const isDarkMode = window.matchMedia(DARK_MODE_MEDIA_QUERY).matches
-    userTheme = isDarkMode ? 1 : 0 // The Indices for dark and light modes respectively
+    userTheme = isDarkMode
+  }
+
+  // Default if The Number gotten doesn't actually correspond to an index
+  try {
+    checkIndexValidity(userTheme, THEMES)
+  } catch {
+    userTheme = isDarkMode
   }
 
   return userTheme
