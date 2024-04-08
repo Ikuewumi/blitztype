@@ -5,7 +5,7 @@ export const Footer = (): JSXElement => {
   return (
     <footer>
       <p>Made with 💙 by <a href="https://github.com/Ikuewumi" target="_blank">iKAY</a></p>
-      <p><a href="https://github.com/Ikuewumi/speed-typing" target="_blank">Source Code</a></p>
+      <p><a href="https://github.com/Ikuewumi/blitztype" target="_blank">Source Code</a></p>
     </footer>
   )
 }
