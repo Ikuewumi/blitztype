@@ -1,4 +1,6 @@
-# Speed Typing
+# blitztype
+
+![celebrating a high score in blitztype](./design/highscore.png)
 
 ## Introduction
 A platform for boosting your typing speed and accuracy. Complete with:
